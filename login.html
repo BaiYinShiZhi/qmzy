@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>巴山蜀水 · 渝见非遗 | 系统登录</title>
+    <style>
+        :root {
+            --cq-red: #8e1c1c;
+            --ink-black: #1a1a1a;
+            --paper-white: #fdfcf8;
+            --mist-blue: #a4b0be;
+            --gold-accent: #cfa161;
+            --placeholder-bg: #e6e3dd;
+            --placeholder-border: #95a5a6;
+            --font-title: "Noto Serif SC", "SimSun", serif;
+            --font-body: "PingFang SC", "Microsoft YaHei", sans-serif;
+            --transition-smooth: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f5f4ee;
+            color: var(--ink-black);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgdmlld0JveD0iMCAwIDYwIDYwIj48ZyBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiM4ZTFjMWMiIGZpbGwtb3BhY2l0eT0iMC4wMiI+PHBhdGggZD0iTTM2IDM0djZoNFYyMGgtNnY0aC00djRoLTR2Nmg0em0wIDBoNHYtNGgtNHZ6bS04IDBoLTR2NGg0em0tNCA0aC00djRoNHptLTQgNGgtNHY0aDR6bTAtMTZoNHYtNGgtNHZ6bTQtNGg0di00aC00em00LTRoNHYtNGgtNHptMjQgMjBoNFYwSDB2NjBoNjB2LTRoLTR2LTRoLTR2LTRoNHYtNGgtNHYtNGgtNHYtNGg0di00aC00em0tNCAwSDBWMGg0MHY0MGgtNHY0aC00em0tNCA0aC00djRoNHptLTQgNGgtNHY0aDR6bS00IDRoLTR2NGg0em0wLTI0aDR2LTRoLTR2em00LTRoNHYtNGgtNHZ6bTQtNGg0di00aC00em00IDM2aDR2LTRoLTR2em00LTRoNHYtNGgtNHZ6bTQtNGg0di00aC00em0tMzYgMGgtNHY0aDR6bS00LTRoLTR2NGg0em0tNC00aC00djRoNHptMzYtMTZoNHYtNGgtNHZ6bTQtNGg0di00aC00em00LTRoNHYtNGgtNHptLTM2IDBoLTR2NGg0em0tNC00aC00djRoNHptLTQtNGg0di00aC00em0wIDI0aDR2LTRoLTR2em00LTRoNHYtNGgtNHZ6bTQtNGg0di00aC00em0wIDI0aDR2LTRoLTR2em00LTRoNHYtNGgtNHZ6bTQtNGg0di00aC00em0tMzYgMGgtNHY0aDR6bS00LTRoLTR2NGg0em0tNC00aC00djRoNHptMjAgNGg0di00aC00em00LTRoNHYtNGgtNHptNC00aDR2LTRoLTR6bTAtMTZoNHYtNGgtNHZ6bTQtNGg0di00aC00em00LTRoNHYtNGgtNHptLTI0IDIwaDR2LTRoLTR2em00LTRoNHYtNGgtNHZ6bTQtNGg0di00aC00em0wIDI0aDR2LTRoLTR2em00LTRoNHYtNGgtNHZ6bTQtNGg0di00aC00em0tMjQgMGgtNHY0aDR6bS00LTRoLTR2NGg0em0tNC00aC00djRoNHptMTYtMjBoNHYtNGgtNHZ6bTQtNGg0di00aC00em00LTRoNHYtNGgtNHptMCAzNmg0di00aC00dnptNC00aDR2LTRoLTR2em00LTRoNHYtNGgtNHptLTI0IDBoLTR2NGg0em0tNC00aC00djRoNHptLTQtNGg0di00aC00em0zNi0xNmg0di00aC00em00LTRoNHYtNGgtNHptNC00aDR2LTRoLTR6Ii8+PC9nPjwvZz48L3N2Zz4=');
+            z-index: -2;
+        }
+
+        h1, h2, h3 {
+            font-family: var(--font-title);
+            font-weight: 700;
+        }
+
+        .img-placeholder {
+            background-color: var(--placeholder-bg);
+            border: 1px solid var(--placeholder-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            text-align: center;
+            padding: 20px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .img-placeholder::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+        }
+
+        .login-wrapper {
+            background-color: var(--paper-white);
+            border: 1px solid #e0ded7;
+            width: 100%;
+            max-width: 960px;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.06);
+            position: relative;
+            z-index: 1;
+        }
+
+        .login-visual {
+            min-height: 540px;
+            border: none;
+            border-right: 1px solid #e0ded7;
+        }
+
+        .login-form-box {
+            padding: 50px 45px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .brand-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 40px;
+        }
+
+        .brand-logo-box {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            border: 1px solid var(--cq-red);
+            font-size: 0.5rem;
+        }
+
+        .brand-name {
+            font-family: var(--font-title);
+            font-size: 1.2rem;
+            color: var(--cq-red);
+            font-weight: bold;
+        }
+
+        .login-form-box h2 {
+            font-size: 2.2rem;
+            color: var(--ink-black);
+            margin-bottom: 5px;
+        }
+
+        .login-subtitle {
+            color: #777;
+            font-size: 0.85rem;
+            margin-bottom: 35px;
+            display: block;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: var(--ink-black);
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            background-color: #fff;
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            outline: none;
+            transition: var(--transition-smooth);
+        }
+
+        .form-group input:focus {
+            border-color: var(--cq-red);
+            box-shadow: 0 0 10px rgba(142, 28, 28, 0.05);
+        }
+
+        .login-btn {
+            width: 100%;
+            background-color: var(--ink-black);
+            color: white;
+            border: none;
+            padding: 14px 0;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 1rem;
+            letter-spacing: 4px;
+            margin-top: 10px;
+            transition: var(--transition-smooth);
+        }
+
+        .login-btn:hover {
+            background-color: var(--cq-red);
+        }
+
+        .hint-text {
+            margin-top: 30px;
+            font-size: 0.85rem;
+            color: #777;
+            text-align: center;
+            background-color: #f8f7f2;
+            padding: 12px;
+            border: 1px dashed #e0ded7;
+            line-height: 1.5;
+        }
+
+        .hint-text strong {
+            color: var(--cq-red);
+        }
+
+        .footer-mark {
+            position: absolute;
+            bottom: 20px;
+            font-size: 0.8rem;
+            color: #999;
+            text-align: center;
+            width: 100%;
+            left: 0;
+            z-index: 0;
+        }
+
+        @media (max-width: 992px) {
+            .login-wrapper { grid-template-columns: 1fr; max-width: 460px; }
+            .login-visual { display: none; }
+        }
+
+        @media (max-width: 480px) {
+            .login-form-box { padding: 40px 25px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-wrapper">
+        <div class="img-placeholder login-visual"><img src="/img/login.png" style="width: 500px;" alt=""></div>
+        <div class="login-form-box">
+            <div class="brand-header">
+                <div class="img-placeholder brand-logo-box"><img src="img/logo.png" style="width: 80px;" alt=""></div>
+                <span class="brand-name">渝见非遗</span>
+            </div>
+            
+            <h2>登录中心</h2>
+            <span class="login-subtitle">ICH Management System</span>
+            
+            <form id="login-form" onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <label>管理员账号</label>
+                    <input type="text" id="username" required placeholder="请输入账号">
+                </div>
+                <div class="form-group">
+                    <label>认证密码</label>
+                    <input type="password" id="password" required placeholder="请输入密码">
+                </div>
+                <button type="submit" class="login-btn">安全登录</button>
+            </form>
+            
+            <div class="hint-text">
+                系统演示账号：<strong>admin</strong> &nbsp;&nbsp; 密码：<strong>123456</strong><br>
+                <span style="font-size: 0.75rem; color:#999;">成功登录后即可解锁并访问</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-mark">
+        设计制作：齐佳钰
+    </div>
+
+    <script>
+        function handleLogin(e) {
+            e.preventDefault();
+            const userInp = document.getElementById('username').value.trim();
+            const passInp = document.getElementById('password').value.trim();
+
+            if (userInp === 'admin' && passInp === '123456') {
+                sessionStorage.setItem('isLoggedIn', 'true'); 
+                alert('登录成功！欢迎进入重庆非遗宣传整合平台。');
+                window.location.href = 'index.html';
+            } else {
+                alert('登录失败：账号或密码输入错误，请重新输入。');
+            }
+        }
+    </script>
+</body>
+</html>

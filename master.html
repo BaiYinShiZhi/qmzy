@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>巴山蜀水 · 渝见非遗 | 匠人匠心</title>
+    <style>
+        :root {
+            --cq-red: #8e1c1c;
+            --ink-black: #1a1a1a;
+            --paper-white: #fdfcf8;
+            --mist-blue: #a4b0be;
+            --bamboo-green: #2f3542;
+            --gold-accent: #cfa161;
+            --placeholder-bg: #e6e3dd;
+            --placeholder-border: #95a5a6;
+            --font-title: "Noto Serif SC", "SimSun", serif;
+            --font-body: "PingFang SC", "Microsoft YaHei", sans-serif;
+            --transition-smooth: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            background-color: var(--paper-white);
+            color: var(--ink-black);
+            font-family: var(--font-body);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition-smooth);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: var(--font-title);
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .img-placeholder {
+            background-color: var(--placeholder-bg);
+            border: 1px solid var(--placeholder-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            text-align: center;
+            padding: 20px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .img-placeholder::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgdmlld0JveD0iMCAwIDQwIDQwIj48ZyBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiM5QzlDOTQiIGZpbGwtb3BhY2l0eT0iMC4wNSI+PHBhdGggZD0iTTAgMGg0MHY0MEgwVjB6bTIwIDIwaDIwdjIwSDIWMjB6TTAgMjBoMjB2MjBIMFYyMHoyMCAwaDIwdjIwSDIwVjB6Ii8+PC9nPjwvZz48L3N2Zz4=');
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: var(--transition-smooth);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        header {
+            background-color: rgba(253, 252, 248, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: var(--transition-smooth);
+            padding: 12px 0;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+        }
+
+        .nav-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 40px;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            color: var(--cq-red);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: var(--font-title);
+        }
+
+        .logo-img-box {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid var(--cq-red);
+            background-color: rgba(255,255,255,0.2);
+            font-size: 0.5rem;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 35px;
+        }
+
+        .nav-menu a {
+            color: var(--ink-black);
+            font-weight: 500;
+            position: relative;
+            padding: 5px 0;
+            font-size: 1rem;
+        }
+
+        .nav-menu a:hover, .nav-menu a.active {
+            color: var(--gold-accent) !important;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 50%;
+            width: 0; height: 2px;
+            background-color: var(--gold-accent);
+            transition: var(--transition-smooth);
+            transform: translateX(-50%);
+        }
+
+        .nav-menu a:hover::after, .nav-menu a.active::after {
+            width: 100%;
+        }
+
+        .subpage-banner {
+            padding-top: 140px;
+            padding-bottom: 60px;
+            background-color: #f8f7f2;
+            text-align: center;
+            border-bottom: 1px solid #e0ded7;
+        }
+
+        .subpage-banner h1 {
+            font-size: 3rem;
+            color: var(--ink-black);
+            margin-bottom: 15px;
+        }
+
+        .subpage-banner p {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        .master-spotlight {
+            padding: 100px 0;
+        }
+
+        .spotlight-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .spotlight-img-box {
+            height: 600px;
+            position: relative;
+        }
+
+        .spotlight-img-box::after {
+            content: '';
+            position: absolute;
+            top: 20px; left: -20px;
+            width: 100%; height: 100%;
+            border: 2px solid var(--gold-accent);
+            z-index: -1;
+        }
+
+        .spotlight-text h2 {
+            font-size: 2.5rem;
+            color: var(--ink-black);
+            margin-bottom: 10px;
+        }
+
+        .master-title {
+            color: var(--cq-red);
+            font-weight: bold;
+            display: block;
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+        }
+
+        .quote-box {
+            font-size: 1.2rem;
+            color: #444;
+            padding-left: 25px;
+            border-left: 4px solid var(--gold-accent);
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+
+        .spotlight-text p {
+            color: #666;
+            text-align: justify;
+            margin-bottom: 20px;
+        }
+
+        .master-grid {
+            padding: 80px 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 40px;
+        }
+
+        .master-card {
+            background-color: white;
+            border: 1px solid #eee;
+            transition: var(--transition-smooth);
+            display: flex;
+            overflow: hidden;
+        }
+
+        .master-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--cq-red);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+        }
+
+        .card-img-sidebar {
+            width: 160px;
+            flex-shrink: 0;
+        }
+
+        .card-content {
+            padding: 30px;
+            flex-grow: 1;
+        }
+
+        .card-content h3 {
+            font-size: 1.4rem;
+            margin-bottom: 5px;
+        }
+
+        .card-content .tag {
+            font-size: 0.8rem;
+            color: var(--cq-red);
+            font-weight: bold;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        .card-content p {
+            font-size: 0.9rem;
+            color: #777;
+            margin-bottom: 20px;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .card-link {
+            font-size: 0.85rem;
+            font-weight: bold;
+            color: var(--gold-accent);
+        }
+
+        .master-philosophy {
+            background-color: var(--bamboo-green);
+            color: #fff;
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .philosophy-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .philosophy-content h2 {
+            font-size: 2.2rem;
+            margin-bottom: 30px;
+            color: var(--gold-accent);
+        }
+
+        .philosophy-content p {
+            font-size: 1.15rem;
+            line-height: 2;
+            color: rgba(255,255,255,0.8);
+            font-weight: 300;
+        }
+
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+
+        footer {
+            background-color: #111;
+            color: rgba(255,255,255,0.4);
+            padding: 80px 0 30px 0;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr;
+            gap: 60px;
+            padding-bottom: 60px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .footer-logo {
+            font-family: var(--font-title);
+            font-size: 1.8rem;
+            color: #fff;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .footer-title {
+            color: #fff;
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+            font-weight: bold;
+        }
+
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links a:hover { color: var(--gold-accent); }
+
+        .footer-bottom {
+            padding-top: 30px;
+            text-align: center;
+            font-size: 0.85rem;
+        }
+
+        .student-mark {
+            color: var(--gold-accent);
+            font-weight: bold;
+            margin-top: 8px;
+        }
+
+        @media (max-width: 992px) {
+            .spotlight-grid { grid-template-columns: 1fr; gap: 40px; }
+            .spotlight-img-box { height: 400px; }
+            .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu { display: none; }
+            .master-card { flex-direction: column; }
+            .card-img-sidebar { width: 100%; height: 200px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <div class="img-placeholder logo-img-box"><img src="img/logo.png" style="width: 80px;" alt=""></div>
+                渝见非遗
+            </div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="archive.html">非遗名录</a></li>
+                    <li><a href="master.html" class="active">匠人匠心</a></li>
+                    <li><a href="experience.html">活态体验</a></li>
+                    <li><a href="about.html">关于我们</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="subpage-banner">
+        <h1>匠人匠心 · 守望传承</h1>
+        <p>致敬每一位巴渝大地上择一事、终一生的非遗守护者</p>
+    </section>
+
+    <main>
+        <section class="master-spotlight">
+            <div class="container">
+                <div class="spotlight-grid">
+                    <div class="spotlight-img-box reveal">
+                        <div class="img-placeholder" style="height: 100%;"><img src="img/ms_1.jpg"  alt=""></div>
+                    </div>
+                    <div class="spotlight-text reveal reveal-delay-2">
+                        <span class="master-title">国家级非遗代表性传承人</span>
+                        <h2>康宁：针尖上的蜀绣灵魂</h2>
+                        <div class="quote-box">
+                            “绣架前坐下的那一刻，世界就安静了。一针一线，绣的是花鸟，守的是心性。”
+                        </div>
+                        <p>作为蜀绣的领军人物，康宁大师在绣架前坚守了四十余载。她的针法严谨、色彩明快，尤其擅长表现动物的灵动与植物的清新。在她的指尖下，锦缎仿佛有了生命。康宁不仅追求技艺的极致，更致力于蜀绣的现代性转化，让古老绣种走进现代人的生活美学。</p>
+                        <p>四十年来，她带徒数百人，不仅传授针法，更传递那份“耐得住寂寞”的匠人品格。在瞬息万变的时代表象下，康宁用一枚细针，挽留住了最慢的时光。</p>
+                        <a href="#" class="cq-red" style="font-weight: bold; border-bottom: 2px solid var(--cq-red);">查看访谈录 →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section style="background-color: #f8f7f2;">
+            <div class="container">
+                <div class="master-grid">
+                    <div class="master-card reveal reveal-delay-1">
+                        <div class="img-placeholder card-img-sidebar"><img src="img/ms_1.jpg" style="height: 200px;" alt=""></div>
+                        <div class="card-content">
+                            <span class="tag">梁平木版年画</span>
+                            <h3>毕必成</h3>
+                            <p>在浓墨重彩中勾勒巴渝乡愁，毕大师将梁平年画的古朴神韵保留至今，每一块雕版都刻满了岁月的痕迹。</p>
+                            <a href="#" class="card-link">了解更多</a>
+                        </div>
+                    </div>
+
+                    <div class="master-card reveal reveal-delay-2">
+                        <div class="img-placeholder card-img-sidebar"><img src="img/ms_1.jpg" style="height: 200px;" alt=""></div>
+                        <div class="card-content">
+                            <span class="tag">荣昌陶制作技艺</span>
+                            <h3>吕季成</h3>
+                            <p>玩转泥土的火中艺术。吕大师坚守陶都荣昌，探索红土与白土的交融，让拉坯技艺在旋转中升华。</p>
+                            <a href="#" class="card-link">了解更多</a>
+                        </div>
+                    </div>
+
+                    <div class="master-card reveal reveal-delay-3">
+                        <div class="img-placeholder card-img-sidebar"><img src="img/ms_1.jpg" style="height: 200px;" alt=""></div>
+                        <div class="card-content">
+                            <span class="tag">川剧变脸</span>
+                            <h3>罗廉</h3>
+                            <p>瞬息万变的面谱下，是深厚的戏曲基本功。罗老师致力于川剧变脸的艺术化表达，拒绝快餐式的表演。</p>
+                            <a href="#" class="card-link">了解更多</a>
+                        </div>
+                    </div>
+
+                    <div class="master-card reveal reveal-delay-1">
+                        <div class="img-placeholder card-img-sidebar"><img src="img/ms_1.jpg" style="height: 200px;" alt=""></div>
+                        <div class="card-content">
+                            <span class="tag">铜梁龙制作</span>
+                            <h3>周合平</h3>
+                            <p>赋予巨龙灵魂的造梦人。从竹篾扎制到色彩描绘，周师傅手中的龙，永远蓄势待发，气吞山河。</p>
+                            <a href="#" class="card-link">了解更多</a>
+                        </div>
+                    </div>
+
+                    <div class="master-card reveal reveal-delay-2">
+                        <div class="img-placeholder card-img-sidebar"><img src="img/ms_1.jpg" style="height: 200px;" alt=""></div>
+                        <div class="card-content">
+                            <span class="tag">火锅底料炒制</span>
+                            <h3>唐顺平</h3>
+                            <p>味觉记忆的掌舵者。在升腾的雾气与麻辣鲜香中，唐师傅用精准的嗅觉守望巴渝饮食的根基。</p>
+                            <a href="#" class="card-link">了解更多</a>
+                        </div>
+                    </div>
+
+                    <div class="master-card reveal reveal-delay-3">
+                        <div class="img-placeholder card-img-sidebar"><img src="img/ms_1.jpg" style="height: 200px;" alt=""></div>
+                        <div class="card-content">
+                            <span class="tag">荣昌折扇</span>
+                            <h3>陈子福</h3>
+                            <p>一开一合间的文雅。陈大师将竹、纸、绢完美融合，在方寸扇面间展现大千世界，气韵生动。</p>
+                            <a href="#" class="card-link">了解更多</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="master-philosophy">
+            <div class="container">
+                <div class="philosophy-content reveal">
+                    <h2>匠人精神 · 时代共振</h2>
+                    <p>
+                        在工业流水线的时代，非遗传承人们依然选择用双手去触碰材料的质感，用生命去丈量技艺的高度。这种“一生择一事”的执着，是浮躁社会的一剂清凉。传承不仅是技艺的简单复制，更是文化认同的延续。这些守艺人，就是巴渝文化最活色生香的载体。
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <span class="footer-logo">渝见非遗</span>
+                    <p>通过数字化手段，整合重庆非遗资源，打造全方位的文化展示与交互平台。</p>
+                </div>
+                <div>
+                    <h5 class="footer-title">快速链接</h5>
+                    <ul class="footer-links">
+                        <li><a href="archive.html">非遗名录</a></li>
+                        <li><a href="master.html">匠人故事</a></li>
+                        <li><a href="experience.html">活动预约</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="footer-title">项目声明</h5>
+                    <p>本网站为课程期末作业展示项目，所引用素材仅用于学术交流。</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 渝见非遗. ALL RIGHTS RESERVED.</p>
+                <p class="student-mark">设计制作：齐佳钰</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const reveals = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target); 
+                }
+            });
+        }, { threshold: 0.1 });
+
+        reveals.forEach(reveal => observer.observe(reveal));
+    </script>
+</body>
+</html>
